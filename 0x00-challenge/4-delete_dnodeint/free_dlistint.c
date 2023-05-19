@@ -3,18 +3,18 @@
 #include "lists.h"
 
 /**
- * free_dlistint - Free a list
+ * free_dlistint - Free a doubly linked list
  *
- * @head: A pointer to the first element of the list
+ * @list: A pointer to the first element of the list
  */
-void free_dlistint(dlistint_t *head)
+void free_dlistint(dlistint_t *list)
 {
-	dlistint_t *node;
+	dlistint_t *current_node;
 
-	while (head)
+	while (list)
 	{
-		node = head;
-		head = head->next;
-		free(node);
+		current_node = list;
+		list = list->next;
+		free(current_node);
 	}
 }

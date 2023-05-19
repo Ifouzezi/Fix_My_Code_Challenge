@@ -5,35 +5,35 @@
 /**
  * add_dnodeint_end - Add a node at the end of a list
  *
- * @head: The address of the pointer to the first element of the list
- * @n: The number to store in the new element
+ * @h: The address of the pointer to the first element of the list
+ * @num: The number to store in the new element
  *
  * Return: A pointer to the new element
  */
-dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
+dlistint_t *add_dnodeint_end(dlistint_t **h, const int num)
 {
-	dlistint_t *new;
-	dlistint_t *l;
+	dlistint_t *new_node;
+	dlistint_t *last;
 
-	new = malloc(sizeof(dlistint_t));
-	if (new == NULL)
+	new_node = malloc(sizeof(dlistint_t));
+	if (new_node == NULL)
 	{
 		return (NULL);
 	}
-	new->n = n;
-	new->next = NULL;
-	if (*head == NULL)
+	new_node->n = num;
+	new_node->next = NULL;
+	if (*h == NULL)
 	{
-		*head = new;
-		new->prev = NULL;
-		return (new);
+		*h = new_node;
+		new_node->prev = NULL;
+		return (new_node);
 	}
-	l = *head;
-	while (l->next != NULL)
+	last = *h;
+	while (last->next != NULL)
 	{
-		l = l->next;
+		last = last->next;
 	}
-	l->next = new;
-	new->prev = l;
-	return (new);
+	last->next = new_node;
+	new_node->prev = last;
+	return (new_node);
 }
