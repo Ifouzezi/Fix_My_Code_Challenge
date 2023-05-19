@@ -4,28 +4,28 @@
 #
 ###
 
-result = []
-ARGV.each do |arg|
-    # skip if not integer
-    next if arg !~ /^-?[0-9]+$/
+sorted_result = []
+ARGV.each do |argument|
+    # Skip if not an integer
+    next if argument !~ /^-?[0-9]+$/
 
-    # convert to integer
-    i_arg = arg.to_i
+    # Convert to an integer
+    int_argument = argument.to_i
 
-    # insert result at the right position
+    # Insert the result at the right position
     is_inserted = false
-    i = 0
-    l = result.size
-    while !is_inserted && i < l do
-        if result[i] < i_arg
-            i += 1
+    index = 0
+    array_size = sorted_result.size
+    while !is_inserted && index < array_size do
+        if sorted_result[index] < int_argument
+            index += 1
         else
-            result.insert(i, i_arg)
+            sorted_result.insert(index, int_argument)
             is_inserted = true
             break
         end
     end
-    result << i_arg if !is_inserted
+    sorted_result << int_argument if !is_inserted
 end
 
-puts result
+puts sorted_result
